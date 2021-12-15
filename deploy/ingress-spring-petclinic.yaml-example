@@ -1,25 +1,25 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: frontend
+  name: spring-petclinic
   namespace: spring-petclinic
   labels:
     app: spring-petclinic
   annotations:
     cert-manager.io/cluster-issuer: lab-cluster-issuer
-    ingress.kubernetes.io/force-ssl-redirect: "false"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/ingress.class: contour
     kubernetes.io/tls-acme: "true"
-    external-dns.alpha.kubernetes.io/hostname: spring-petclinic.labxxx.lab.bekind.io
+    external-dns.alpha.kubernetes.io/hostname: spring-petclinic.DOMAIN
 spec:
   tls:
   - secretName: spring-petclinic-tls
     hosts:
-    - spring-petclinic.labxxx.lab.bekind.io
+    - spring-petclinic.DOMAIN
   rules:
-  - host: spring-petclinic.labxxx.lab.bekind.io
+  - host: spring-petclinic.DOMAIN
     http:
       paths:
       - backend:
-          serviceName: frontend
-          servicePort: 80
+          serviceName: spring-petclinic
+          servicePort: 8080

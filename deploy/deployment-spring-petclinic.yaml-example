@@ -16,7 +16,7 @@ spec:
         app: spring-petclinic
     spec:
       containers:
-      - image: harbor.lab8442.lab.bekind.io/test/spring-petclinic:latest
+      - image: HARBOR_FQDN/test/WORKSHOP_ID-spring-petclinic:latest
         name: spring-petclinic
       imagePullSecrets:
       - name: harbor-cred
